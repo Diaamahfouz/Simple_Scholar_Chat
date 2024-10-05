@@ -4,7 +4,6 @@ import 'package:simple_chat/firebase_options.dart';
 import 'package:simple_chat/pages/login_page.dart';
 import 'package:simple_chat/pages/register_page.dart';
 
-void main() {
   void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -13,7 +12,7 @@ void main() {
   
   runApp(SimpleChat());
 }
-}
+
 
 class SimpleChat extends StatelessWidget {
   const SimpleChat({super.key});
