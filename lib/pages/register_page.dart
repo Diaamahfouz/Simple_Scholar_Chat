@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:simple_chat/constants.dart';
 import 'package:simple_chat/helper/show_snack_bar.dart';
+import 'package:simple_chat/pages/chat_page.dart';
 import 'package:simple_chat/pages/login_page.dart';
 import 'package:simple_chat/widgets/custom_button.dart';
 import 'package:simple_chat/widgets/custom_text_field.dart';
@@ -46,7 +47,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(
                     height: 50,
                   ),
-                  Image.asset('assets/images/scholar.png'),
+                  Image.asset(kLogo),
                   Text(
                     'Scholar chat',
                     style: TextStyle(
@@ -90,6 +91,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         try {
                           await registerUser();
                           showSnackBar(context, message: 'register Successful');
+                          Navigator.of(context)
+                              .pushReplacementNamed(ChatPage.routeName);
                         } on FirebaseAuthException catch (ex) {
                           if (ex.code == 'weeak password') {
                             showSnackBar(context, message: 'weeak password');
