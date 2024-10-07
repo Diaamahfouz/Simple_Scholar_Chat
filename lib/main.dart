@@ -26,7 +26,7 @@ class SimpleChat extends StatelessWidget {
         RegisterPage.routeName: (_) => RegisterPage(),
         ChatPage.routeName: (_) => ChatPage(),
       },
-      initialRoute: ChatPage.routeName,
+      initialRoute: LoginPage.routeName,
       home: Scaffold(
         body: LoginPage(),
       ),

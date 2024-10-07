@@ -8,7 +8,7 @@ import 'package:simple_chat/helper/show_snack_bar.dart';
 import 'package:simple_chat/pages/chat_page.dart';
 import 'package:simple_chat/pages/register_page.dart';
 import 'package:simple_chat/widgets/custom_button.dart';
-import 'package:simple_chat/widgets/custom_text_field.dart';
+import 'package:simple_chat/widgets/custom_text_form_field.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({super.key});
@@ -72,6 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                     },
                   ),
                   CustomTextFormField(
+                    isPassword: true,
                     hintText: 'Password',
                     onChanged: (data) {
                       password = data;
@@ -87,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                           await signInUser();
                           showSnackBar(context, message: 'Login Successful');
                           Navigator.of(context)
-                              .pushReplacementNamed(ChatPage.routeName);
+                              .pushNamed(ChatPage.routeName, arguments: email);
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'user-not-found') {
                             showSnackBar(context,

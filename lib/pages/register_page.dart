@@ -8,7 +8,7 @@ import 'package:simple_chat/helper/show_snack_bar.dart';
 import 'package:simple_chat/pages/chat_page.dart';
 import 'package:simple_chat/pages/login_page.dart';
 import 'package:simple_chat/widgets/custom_button.dart';
-import 'package:simple_chat/widgets/custom_text_field.dart';
+import 'package:simple_chat/widgets/custom_text_form_field.dart';
 
 class RegisterPage extends StatefulWidget {
   RegisterPage({super.key});
@@ -76,6 +76,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     hintText: 'Email',
                   ),
                   CustomTextFormField(
+                    isPassword: true,
                     onChanged: (data) {
                       password = data;
                     },
@@ -92,7 +93,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           await registerUser();
                           showSnackBar(context, message: 'register Successful');
                           Navigator.of(context)
-                              .pushReplacementNamed(ChatPage.routeName);
+                              .pushNamed(ChatPage.routeName, arguments: email);
                         } on FirebaseAuthException catch (ex) {
                           if (ex.code == 'weeak password') {
                             showSnackBar(context, message: 'weeak password');
